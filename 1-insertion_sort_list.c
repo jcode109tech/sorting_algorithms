@@ -1,10 +1,10 @@
 #include "sort.h"
 
 /*
-* insertion_sort_list -a  function that sorts a 
+* insertion_sort_list -a  function that sorts a
 * doubly linked list of integers in ascending order
 * using the Insertion sort algorithm
-* @list: list 
+* @list: list
 * Return: Void
 */
 
@@ -46,19 +46,19 @@ void insertion_sort_list(listint_t **list)
 		current = current->next;
 	}
 }
-/*
-    void insertionSort(int arr[], int n) {
-    int i, key, j;
-    for (i = 1; i < n; i++) {
-        key = arr[i];
-        j = i - 1;
-        Move elements of arr[0..i-1], that are greater than key, 
-        to one position ahead of their current position 
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j = j - 1;
-        }
-        arr[j + 1] = key;
-    }
-}
+/**
+ * void insertionSort(int arr[], int n) {
+ *  int i, key, j;
+ *  for (i = 1; i < n; i++) {
+ *      key = arr[i];
+ *      j = i - 1;
+ *       Move elements of arr[0..i-1], that are greater than key,
+ *      to one position ahead of their current position
+ *      while (j >= 0 && arr[j] > key) {
+ *          arr[j + 1] = arr[j];
+ *      j = j - 1;
+ *      }
+ *      arr[j + 1] = key;
+ *  }
+ *}
 */
