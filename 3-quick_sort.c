@@ -46,7 +46,8 @@ int partition(int *array, int low, int high, size_t size)
 		{
 			i++;
 			swap(&array[i], &array[j]);
-			print_array(array, size);
+			if (i != j)
+				print_array(array, size);
 		}
 	}
 
@@ -88,6 +89,9 @@ void quick_sort_wrapper(int *array, int low, int high, size_t size)
 
 void quick_sort(int *array, size_t size)
 {
+	if (array == NULL || size < 2)
+		return;
+
 	quick_sort_wrapper(array, 0, size - 1, size);
 }
 

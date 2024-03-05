@@ -1,5 +1,8 @@
 #include "sort.h"
 
+
+void swap_values(int *a, int *b);
+
 /**
  * shell_sort - perfors a shell sort using knuth sequence
  * https://en.wikipedia.org/wiki/Shellsort
@@ -9,37 +12,43 @@
  * Return: nothing
  */
 
-
-void shell_sort(int *array, size_t size) 
+void shell_sort(int *array, size_t size)
 {
-    size_t gap = 1, j, i;
-    size_t k;
+	size_t gap, i, j;
 
-    
 	if (array == NULL || size < 2)
 		return;
 
-    while (gap <= size / 3) 
-    {
-        gap = gap * 3 + 1; 
-    }
+	for (gap = 1; gap < (size / 3);)
+		gap = gap * 3 + 1;
 
-    while (gap > 0) 
-    {
-        for (k = 0; k < size; k++) {
-            print_array(array, size);
-        }
-        printf("\n");
-
-        for (i = gap; i < size; i++) {
-            j = i;
-            while (j >= gap && array[j - gap] > array[i]) 
-            {
-                array[j] = array[j - gap];
-                j -= gap;
-            }
-            array[j] = array[i];
-        }
-        gap = (gap - 1) / 3;
-    }
+	for (; gap >= 1; gap /= 3)
+	{
+		for (i = gap; i < size; i++)
+		{
+			j = i;
+			while (j >= gap && array[j - gap] > array[j])
+			{
+				swap_values(array + j, array + (j - gap));
+				j -= gap;
+			}
+		}
+		print_array(array, size);
+	}
 }
+
+
+/**
+ * swap_values - Swap  in an array.
+ * @a: The first integer to swap.
+ * @b: The second integer to swap.
+ */
+void swap_values(int *a, int *b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
